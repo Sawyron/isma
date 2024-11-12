@@ -1,6 +1,8 @@
 package ru.nstu.grin.common.extensions
 
 import javafx.scene.paint.Color
+import java.io.DataInputStream
+import java.io.InputStream
 import java.io.ObjectInputStream
 import java.nio.ByteBuffer
 
@@ -12,9 +14,10 @@ fun Color.toByteArray(): ByteArray {
     return byteBuffer.array()
 }
 
-fun readColor(ois: ObjectInputStream): Color {
-    val red = ois.readDouble()
-    val green = ois.readDouble()
-    val blue = ois.readDouble()
+fun readColor(input : InputStream): Color {
+    val dataInput = DataInputStream(input)
+    val red = dataInput.readDouble()
+    val green = dataInput.readDouble()
+    val blue = dataInput.readDouble()
     return Color.color(red, green, blue)
 }

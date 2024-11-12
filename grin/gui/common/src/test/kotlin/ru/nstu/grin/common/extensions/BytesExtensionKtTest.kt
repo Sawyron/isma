@@ -16,9 +16,7 @@ internal class BytesExtensionKtTest {
         val serialized = baos.toByteArray()
         baos.close()
         val bais = ByteArrayInputStream(serialized)
-        val ois = ObjectInputStream(bais)
-        val deserialized = readColor(ois)
-        ois.close()
+        val deserialized = readColor(bais)
         assertEquals(color, deserialized)
     }
 }
